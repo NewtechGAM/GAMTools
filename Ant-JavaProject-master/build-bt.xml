@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project name="${project.name}" default="main">
+
+	<!--- Including properties file  here-->
+	<property file="build.properties"/>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="compile" depends="init" description="Compile all the Java source files ">
+		<!-- Compile the java code from ${src.dir} and put it into ${build.dir} -->
+		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
+	</target>
+
+	<target name="dist" depends="compile" description="Creating the package and put into to ${dist.dir}">
+
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist.dir}" />
+
+		<!-- Put everything in ${build} into the {$project.name}-${DSTAMP}.jar file -->
+		<jar jarfile="${dist.dir}/${project.name}-${DSTAMP}.jar" basedir="${build.dir}" >
+			<manifest>
+				<attribute name="Main-Class" value="com.bt.general.HelloWorld" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean" description="cleaning up">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Default, run this target -->
+	<target name="main" depends="clean, compile, dist" />
+
+</project>
