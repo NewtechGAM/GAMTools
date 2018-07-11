@@ -16,15 +16,15 @@
         <struts2.version>2.3.20</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-         <distributionManagement>
+        <distributionManagement>
 	    <repository>
 	      <id>nexus</id>
-	      <name>geae mso releases repo</name>
+	      <name>Mithun Technologies Releases Nexus Repository</name>
 	      <url>http://localhost:8081/repository/geae-mso-releases/</url>
 	    </repository>
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>geae mso snapshot repo </name>
+	      <name>Mithun Technologies Snapshot Nexus Repository </name>
 	      <url>http://localhost:8081/repository/geae-mso-snapshot/</url>
 	    </snapshotRepository>
 	</distributionManagement>
