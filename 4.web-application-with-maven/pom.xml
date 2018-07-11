@@ -16,6 +16,18 @@
         <struts2.version>2.3.20</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+         <distributionManagement>
+	    <repository>
+	      <id>nexus</id>
+	      <name>geae mso releases repo</name>
+	      <url>http://localhost:8081/repository/geae-mso-releases/</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>geae mso snapshot repo </name>
+	      <url>http://localhost:8081/repository/geae-mso-snapshot/</url>
+	    </snapshotRepository>
+	</distributionManagement>
 
     <modules>
         <module>in28minutes-core</module>
