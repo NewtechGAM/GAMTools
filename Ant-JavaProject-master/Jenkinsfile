@@ -1,5 +1,4 @@
 
-#! groovy
 node{
  stage('Source'){
      git 'https://github.com/devopstrainingblr/Ant-JavaProject.git'
