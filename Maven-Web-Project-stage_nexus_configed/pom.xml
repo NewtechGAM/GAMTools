@@ -81,14 +81,14 @@
 
 	<distributionManagement>
 	    <repository>
-	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://localhost:8081/repository/geae-mso-releases/</url>
+	      <id>Gnexus</id>
+	      <name>MAVEN GNAN RELEASE REPO</name>
+	      <url>http://192.168.1.183:8050/repository/maven_gnan_release/</url>
 	    </repository>
 	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://localhost:8081/repository/geae-mso-snapshot/</url>
+	      <id>Gnexus</id>
+	      <name>MAVEN GNAN SNAPSHOT REPO</name>
+	      <url>http://192.168.1.183:8050/repository/maven_gnan_snapshot/</url>
 	    </snapshotRepository>
 	</distributionManagement>
 	
