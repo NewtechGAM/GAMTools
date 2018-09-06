@@ -115,7 +115,7 @@
    <version>1.0.2.Final</version>
    <configuration>
       <hostname>${hostname}</hostname>
-      <port>8040</port>
+      <port>${cport}</port>
       <username>gnan</username>
       <password>spartan</password>
    </configuration>
