@@ -109,6 +109,17 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.2</version>
       </plugin>
+	    <plugin>
+   <groupId>org.wildfly.plugins</groupId>
+   <artifactId>wildfly-maven-plugin</artifactId>
+   <version>1.0.2.Final</version>
+   <configuration>
+      <hostname>${hostname}</hostname>
+      <port>8040</port>
+      <username>gnan</username>
+      <password>spartan</password>
+   </configuration>
+</plugin>
     </plugins>
   </build>
 
