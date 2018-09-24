@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}" default="init" basedir=".">
+
+	<property file="./build.properties" />
+	
+	<target name="init" depends="prepare,compile,war" description="Clean work directories, then compile and create a WAR then create the EAR">
+		<echo> Build completed for ${project.name} </echo>
+	</target>
+	
+	<!-- Define the CLASSPATH -->
+	<path id="compile.classpath">
+		<fileset dir="${web.home}/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${work.home}"/>
+	</path>
+
+	<target name="prepare"  description="Create working dirs and copy static files to work dir">
+		<mkdir  dir="${dist.home}"/>
+		<mkdir  dir="${work.home}/WEB-INF/classes"/>
+		<mkdir  dir="${war.home}"/>
+		<!-- Copy static HTML and JSP files to work dir -->
+		<copy todir="${work.home}">
+			<fileset dir="${web.home}"/>
+		</copy>
+	</target>
+
+	<target name="compile" 
+	          description="Compile Java sources and copy to WEB-INF/classes dir">
+		<javac srcdir="${src.home}"
+	          destdir="${work.home}/WEB-INF/classes" includeantruntime="yes">
+			<classpath refid="master-classpath"/>
+		</javac>
+		<copy  todir="${work.home}/WEB-INF/classes">
+			<fileset dir="${src.home}" excludes="**/*.java"/>
+		</copy>
+
+	</target>
+
+	<!-- Define the CLASSPATH -->
+
+	<path id="master-classpath">
+		<fileset dir="${web.home}/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${work.home}"/>
+	</path>
+
+	
+	<target name="war" 
+	          description="Create WAR file for binary distribution">
+		<war destfile="${war.home}/${app.name}.war" webxml="${work.home}/WEB-INF/web.xml">
+			<fileset dir="${work.home}"/>
+			<classes dir="${work.home}/WEB-INF/classes"/>
+		</war>
+		<copy file="${war.home}/${app.name}.war" todir="${dist.home}" overwrite="true" />
+	</target>
+
+	<target name="ear" >
+		<ear destfile="${dist.home}/${ear.name}" appxml="${app.home}/application.xml" update="true">
+			<fileset dir="${war.home}" includes="*.jar,*.war"/>
+			<metainf dir="${app.home}" excludes="application.xml"/>
+		</ear>
+		
+		<delete file="${dist.home}/${app.name}.war" /> 
+		<delete dir="${war.home}" />
+		<delete dir="${work.home}" />
+	</target>
+	
+</project>
